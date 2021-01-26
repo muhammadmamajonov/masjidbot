@@ -1,0 +1,319 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Masjid boti </title>
+
+    <!-- Prevent the demo from appearing in search engines -->
+    <meta name="robots" content="noindex">
+
+    <script src="{% static 'dashboard/assets/vendor/jquery.min.js' %}"></script>
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" href="{% static 'vendor/perfect-scrollbar.css' %}" rel="stylesheet">
+
+    <!-- App CSS -->
+    <link type="text/css" href="{% static 'css/app.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/app.rtl.css' %}" rel="stylesheet">
+
+    <!-- Material Design Icons -->
+    <link type="text/css" href="{% static 'css/vendor-material-icons.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/vendor-material-icons.rtl.css' %}" rel="stylesheet">
+
+    <!-- Font Awesome FREE Icons -->
+    <link type="text/css" href="{% static 'css/vendor-fontawesome-free.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/vendor-fontawesome-free.rtl.css' %}" rel="stylesheet">
+
+    <!-- ion Range Slider -->
+    <link type="text/css" href="{% static 'css/vendor-ion-rangeslider.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/vendor-ion-rangeslider.rtl.css' %}" rel="stylesheet">
+
+
+    <!-- Flatpickr -->
+    <link type="text/css" href="{% static 'css/vendor-flatpickr.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/vendor-flatpickr.rtl.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/vendor-flatpickr-airbnb.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/vendor-flatpickr-airbnb.rtl.css' %}" rel="stylesheet">
+
+    <!-- Quill Theme -->
+    <link type="text/css" href="{% static 'css/vendor-quill.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/vendor-quill.rtl.css' %}" rel="stylesheet">
+
+    <!-- Dropzone -->
+    <link type="text/css" href="{% static 'css/vendor-dropzone.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/vendor-dropzone.rtl.css' %}" rel="stylesheet">
+
+    <!-- Select2 -->
+    <link type="text/css" href="{% static 'css/vendor-select2.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/vendor-select2.rtl.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet">
+
+
+</head>
+
+
+
+<script src="{% static 'vendor/jquery.min.js' %}"></script>
+<script src="{% static 'js/tolov-form-gr-t.js' %}"></script>
+
+
+<body class="layout-fluid app-chat">
+
+    <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px" data-fullbleed>
+        <div class="mdk-drawer-layout__content">
+
+            <!-- Header Layout -->
+            <div class="mdk-header-layout js-mdk-header-layout" data-has-scrolling-region>
+
+                <!-- Header -->
+
+                <div id="header" class="mdk-header js-mdk-header m-0" data-fixed data-effects="waterfall" data-retarget-mouse-scroll="false">
+                    <div class="mdk-header__content">
+
+                        <div class="navbar navbar-expand-sm navbar-main navbar-dark bg-primary pl-md-0 pr-0" id="navbar" data-primary>
+                            <div class="container-fluid page__container pr-0">
+
+                                <!-- Navbar toggler -->
+                                <button class="navbar-toggler navbar-toggler-custom  d-lg-none d-flex mr-navbar" type="button" data-toggle="sidebar">
+                                    <span class="material-icons icon-14pt">menu</span>
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- // END Header -->
+
+                <!-- Header Layout Content -->
+                <div class="mdk-header-layout__content mdk-header-layout__content--fullbleed mdk-header-layout__content--scrollable page" style="padding-top: 60px;">
+
+
+
+                    <!-- f -->
+                    <div class="container page__container">
+                        <div class="card card-form">
+                            <div class="row no-gutters">
+                                <div class="col-lg-4 card-body">
+                                    <p><strong class="headings-color">Yangi mavzu</strong></p>
+                                    <form action="{% url 'ymq' %}" method="POST">
+                                        {% csrf_token %}
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="inputGroup-sizing-default">Mavzu nomi</span>
+                                            <input type="text" name="mavn" class="form-control" id="inputGroupFile02">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Qo'shish</button>
+                                    </form>
+                                </div>
+                                <div class="col-lg-8 card-form__body card-body">
+                                    <form action="{% url 'darslar' %}" method="POST">
+
+                                        {% csrf_token %}
+
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="inputGroup-sizing-default">Dars nomi</span>
+                                            <input type="text" name="dn" class="form-control" id="inputGroupFile02">
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="inputGroup-sizing-default">Muallif</span>
+                                            <input type="text" name="muallif" class="form-control" id="inputGroupFile02">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Dars audio</span>
+                                            <input type="file" name="dars_audio" class="form-control">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Qaysi mavzu</span>
+                                            <select name="mavzu">
+                                                {% for mavzu in mavzular %}
+                                                <option value="{{mavzu.id}}">{{mavzu.mavzu}}</option>
+                                                {% endfor %}
+                                            </select>
+
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Qo'shish</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /f -->
+
+
+
+                    <!-- s -->
+                    <div class="card card-form">
+                        <div class="row no-gutters">
+
+                            <div class="col-lg-16 card-form__body">
+
+                                <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+
+                                    <table class="table mb-0 thead-border-top-0">
+                                        <thead>
+                                            <tr>
+
+                                                <th style="width: 1700px;" style="text-align: center;">Nomi</th>
+                                                <th style="width: 1000px;">Muallif</th>
+                                                <th style="width: 1000px;">Mavzu</th>
+                                                <th style="width: 100px;">O'chirish</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="list" id="staff02">
+                                            {% for dars in darslar %}
+
+                                            <tr>
+
+                                                <td style="width: 10px;">
+
+                                                    <a><span class="js-lists-values-employee-name">{{dars.dars_nomi}}</span></a>
+
+                                                </td>
+                                                <td><span class="js-lists-values-employee-name">{{dars.muallif}}</span></td>
+                                                <td><span class="text-muted">{{dars.qaysi_mavzu.mavzu}}</span></td>
+                                                <td>
+                                                    <form action="{% url 'dars-ochirish' %}" method="POST">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="did" value="{{dars.id}}">
+                                                        <button type="submit" style="border: 0;"><img src="{% static 'rasm/chelak.svg' %}" style="width: 30px" style="height: 30px;" ></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+
+
+                </div>
+                <!-- // END header-layout__content -->
+
+            </div>
+            <!-- // END header-layout -->
+
+        </div>
+        <!-- // END drawer-layout__content -->
+
+        <div class="mdk-drawer  js-mdk-drawer" id="default-drawer" data-align="">
+            <div class="mdk-drawer__content">
+                <div class="sidebar sidebar-dark sidebar-left bg-dark-gray" data-perfect-scrollbar>
+
+                    <div class="d-flex align-items-center sidebar-p-a sidebar-account flex-shrink-0">
+                        <a class="flex d-flex align-items-center text-underline-0">
+                            <span class="mr-3">
+                                <!-- LOGO -->
+                                <img src="{% static 'rasm/kaaba.svg' %}" style="width: 50px" style="height: 50px;" alt="">
+                            </span>
+                            <span class="flex d-flex flex-column">
+                                <span class="sidebar-brand">Masjid</span>
+                            <small></small>
+                            </span>
+                        </a>
+                    </div>
+
+
+                    <br><br>
+                    <div class="sidebar-heading">Ma'mur</div>
+                    <div class="sidebar-block p-0">
+                        <ul class="sidebar-menu mt-0">
+                            <li class="sidebar-menu-item ">
+                                <a class="sidebar-menu-button" href="{% url 'malumot-yozish' %}">
+                                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
+                                    <span class="sidebar-menu-text">Namoz vaqtlari</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item ">
+                                <a class="sidebar-menu-button" href="{% url 'maruzalar' %}">
+                                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
+                                    <span class="sidebar-menu-text">Maruzalar</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button" href="{% url 'darslar' %}">
+                                    <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
+                                    <span class="sidebar-menu-text">Darslar</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item active">
+                                <a class="sidebar-menu-button" href="{% url 'chiqish' %}">
+                                    <span class="material-icons mr-2">exit_to_app</span> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- // END drawer-layout -->
+
+
+
+        <!-- jQuery -->
+        <script src="{% static 'vendor/jquery.min.js' %}"></script>
+
+        <!-- Bootstrap -->
+        <script src="{% static 'vendor/popper.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap.min.js' %}"></script>
+
+        <!-- Perfect Scrollbar -->
+        <script src="{% static 'vendor/perfect-scrollbar.min.js' %}"></script>
+
+        <!-- DOM Factory -->
+        <script src="{% static 'vendor/dom-factory.js' %}"></script>
+
+        <!-- MDK -->
+        <script src="{% static 'vendor/material-design-kit.js' %}"></script>
+
+        <!-- Range Slider -->
+        <script src="{% static 'vendor/ion.rangeSlider.min.js' %}"></script>
+        <script src="{% static 'js/ion-rangeslider.js' %}"></script>
+
+        <!-- App -->
+        <script src="{% static 'js/toggle-check-all.js' %}"></script>
+        <script src="{% static 'js/check-selected-row.js' %}"></script>
+        <script src="{% static 'js/dropdown.js' %}"></script>
+        <script src="{% static 'js/sidebar-mini.js' %}"></script>
+        <script src="{% static 'js/app.js' %}"></script>
+
+        <!-- App Settings (safe to remove) -->
+        <script src="{% static 'js/app-settings.js' %}"></script>
+
+
+        <!-- Flatpickr -->
+        <script src="{% static 'vendor/flatpickr/flatpickr.min.js' %}"></script>
+        <script src="{% static 'js/flatpickr.js' %}"></script>
+
+        <!-- jQuery Mask Plugin -->
+        <script src="{% static 'vendor/jquery.mask.min.js' %}"></script>
+
+        <!-- Quill -->
+        <script src="{% static 'vendor/quill.min.js' %}"></script>
+        <script src="{% static 'js/quill.js' %}"></script>
+
+        <!-- Dropzone -->
+        <script src="{% static 'vendor/dropzone.min.js' %}"></script>
+        <script src="{% static 'js/dropzone.js' %}"></script>
+
+        <!-- Select2 -->
+        <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+        <script src="{% static 'js/select2.js' %}"></script>
+        <script src="{% static 'js/fan_oqituvchilari.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</body>
+
+</html>
